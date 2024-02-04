@@ -6,87 +6,105 @@
 }
 
 <div class="container justify-content-center">
-    <div class="row mt-5">
-        <div class="col-lg-5 col-md-6 col-sm-10 col-xxl-3 col-xl-4 m-auto">
-            <h2 class="text-center pt-2">Create New Account</h2>
-            <div class="alert alert-danger p-3 visually-hidden" role="alert"></div>
-            <form action="#" class="mt-3">
-                <div class="input-group mb-2">
+    <form action="Signup" controller="Account" method="post">
+        <div class="row mt-5">
+            <div class="col-lg-5 col-md-6 col-sm-10 col-xxl-3 col-xl-4 m-auto">
+                <h2 class="text-center pt-2">Create New Account</h2>
+                <div class="alert alert-danger p-3 visually-hidden" role="alert"></div>
+                <div class="input-group mb-2" data-id="username">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control" placeholder="Username" asp-for="Username" />
+                    <input name="username" type="text" class="form-control" placeholder="Username" asp-for="Username" />
                     <span class="text-danger" asp-validation-for="Username"></span>
                 </div>
-                <div class="input-group mb-2">
+                <div class="input-group mb-2" data-id="email">
                     <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                    <input type="email" class="form-control" placeholder="Email" asp-for="Email" />
+                    <input name="email" type="email" class="form-control" placeholder="Email" asp-for="Email" />
                     <span class="text-danger" asp-validation-for="Email"></span>
                 </div>
-                <div class="input-group mb-2" ">
+                <div class="input-group mb-2" data-id="password">
                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                    <input id="password" type="password" class="form-control" placeholder="Password" asp-for="Password" />
+                    <input name="password" data-pwd="one" type="password" class="form-control" placeholder="Password" asp-for="Password" />
                     <span class="text-danger" asp-validation-for="Password"></span>
                 </div>
-                <div class="input-group mb-2">
+                <div class="input-group mb-2" data-id="confirmpassword">
                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="Confirm Password" asp-for="ConfirmPassword" />
+                    <input name="confirmpassword" type="password" data-pwd="two" class="form-control" placeholder="Confirm Password" asp-for="ConfirmPassword" />
                     <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
                 </div>
                 <div class="d-grid">
-                    <button id="btnsignup" class="btn btn-success">Signup Now</button>
+                    <input type="submit" class="btn btn-success" value="Signup Now" actions="Signnup" />
                     <p class="text-center text-muted mt-3">
                         When You Register by Clicking on Signup button, You Agree to our
                         <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>
                     </p>
                     <p class="text-center text-muted mt-1">Already have an account? <a href="Signin">Login Here</a></p>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
 @section scripts
     {
-        <script src="~/Scripts/local/account.js?version=7"></script>
-        <script>
-            $(document).ready(function () {
-                let $click = false;
-                let $user = $('input[type=text]');
-                let $pwd = $('input[type=password]');
-                let $email = $('input[type=email]');
-                let $error = $('.alert-danger');
-                let $errorMessage = "<span style='border-left:3px solid red; padding-left:7px; background-color:green;'> Mandatory Fields</span> <button type='button' class='btn - close' data-bs-dismiss='alert' aria-label='Close'>X</button>";
+    <script>
+        $(document).ready(function () {
+            $("form").submit(function (event) {
+                event.preventDefault(); // Prevent form submission
 
-                $(".btn-success").click(function () {
-                    if ($user.val() === "") {
-                        $user.attr("style", "border-right:5px solid red;").attr("data-error", "on");
-                        $error.attr("class", "alert alert-danger p-3");
-                        $click = true;
-                    }
+                let isValid = true;
 
-                    if ($email.val() === "") {
-                        $email.attr("style", "border-right:5px solid red;").attr("data-error", "on");
-                        $error.attr("class", "alert alert-danger p-3");
-                        $click = true;
-                    } else {
-                        $EmailVerifyFunction($email.val());
-                    }
+                // Reset error styles
+                $("input").removeClass("is-invalid");
+                $(".alert").addClass("visually-hidden").empty();
 
-                    if ($pwd.val() === "") {
-                        $pwd.attr("style", "border-right:5px solid red;").attr("data-error", "on");
-                        $error.attr("class", "alert alert-danger p-3");
-                        $click = true;
-                    }
-
-                    if ($click === true) {
-                        $error.html($errorMessage);
-                        return false;
-                    } else {
-                        return true;
+                // Validate each input field
+                $("input").each(function () {
+                    if ($(this).val().trim() === "") {
+                        isValid = false;
+                        $(this).addClass("is-invalid");
                     }
                 });
-                $UserKeyPress_and_Focusout();
-                $EmailKeyPress_and_Focusout();
-                $PasswordKeyPress_and_Focusout();
+
+                // Password matching check
+                let password = $("input[name=password]").val().trim();
+                let confirmPassword = $("input[name=confirmpassword]").val().trim();
+                if (password !== confirmPassword) {
+                    isValid = false;
+                    $("input[name=confirmpassword]").addClass("is-invalid");
+                    $(".alert").removeClass("visually-hidden").text("Password mismatch");
+                }
+
+                // Email validation using HTML5 built-in validation
+                let emailField = $("input[name=email]")[0];
+                if (!emailField.checkValidity()) {
+                    isValid = false;
+                    $(emailField).addClass("is-invalid").attr('tooltip', 'Please enter a valid email address');
+                    $(".alert").removeClass("visually-hidden").text("Please enter a valid email address");
+                }
+
+                if (isValid === true) {
+                    // Serialize the form data
+                    var formData = $(this).serialize();
+
+                    // Make an AJAX POST request
+                    $.post({
+                        url: "/Account/Signup", // Adjust the URL as per your application's routing setup
+                        data: formData,
+                        success: function (response) {
+                            // Handle the successful response
+                            console.log("Signup successful");
+                            // Optionally, redirect to a new page or show a success message
+                        },
+                        error: function (xhr, status, error) {
+                            // Handle errors
+                            console.error("Error:", error);
+                            // Optionally, display an error message to the user
+                        }
+                    });
+                }
+
+                return isValid;
             });
-        </script>
-    }
+        });
+    </script>
+}
