@@ -113,18 +113,21 @@
 //    });
 //}
 
-//    //Email Verify
-//    let $EmailVerifyFunction = function(e) {
-//        let $emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//        if (!$emailRegex.test(e)) {
-//            $email.attr("style", "border-right:5px solid red;").attr("data-error", "on");
-//            $error.attr("class", "alert alert-danger p-3").html("Please Enter Valid Email Address");
-//            $click = true;
-//        } else {
-//            $email.removeAttr("style");
-//            $error.attr("class", "alert alert-danger p-3 visually-hidden");
-//        }
+//Email Verify
+//function EmailVerify(e) {
+//    let $emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//    if (!$emailRegex.test(e)) {
+//        $('input[type=email]').attr("style", "border-right:5px solid red;").attr("data-error", "on");
+//        $('.alert-danger').attr("class", "alert alert-danger p-3").text("Please Enter Valid Email Address");
+//        alert('fail');
+//        $click = true;
+//    } else {
+//        alert('correct');
+//        $('input[type=email]').removeAttr("style");
+//        $('.alert-danger').attr("class", "alert alert-danger p-3 visually-hidden");
+//        $click = false;
 //    }
+//}
     
 
     //function validation() {

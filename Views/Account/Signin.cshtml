@@ -32,5 +32,27 @@
 
 @section scripts
 {
-    <script src="~/Scripts/local/account.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("form").submit(function (event) {
+                event.preventDefault(); // Prevent form submission
+
+                let isValid = true;
+
+                // Reset error styles
+                $("input").removeClass("is-invalid");
+                $(".alert").addClass("visually-hidden").empty();
+
+                // Validate each input field
+                $("input").each(function () {
+                    if ($(this).val().trim() === "") {
+                        isValid = false;
+                        $(this).addClass("is-invalid");
+                    }
+                });
+
+                return isValid;
+            });
+        });
+    </script>
 }
