@@ -1,58 +1,36 @@
-﻿
+﻿@model SocialNetworking.ViewModel.LoginViewModel
+
 @{
     ViewBag.Title = "Signin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container justify-content-center">
-    <div class="row mt-5">
-        <div class="col-lg-3 m-auto">
-            <h2 class="text-center pt-2">Sign In</h2>
-            <div class="alert alert-danger p-3 visually-hidden"></div>
-            <form action="#" class="mt-3">
+@using (Html.BeginForm("Signin", "Account", FormMethod.Post))
+{
+    <div class="container justify-content-center">
+        <div class="row mt-5">
+            <div class="col-lg-5 col-md-6 col-sm-10 col-xxl-3 col-xl-4 m-auto">
+                <h2 class="text-center pt-2">Sign In</h2>
+                @if (Model != null)
+                {<div class="alert alert-danger p-3" role="alert">@Model.ErrorMessage</div>}
+            else
+            { <div class="alert alert-danger p-3 visually-hidden" role="alert"></div>}
                 <div class="input-group mb-2">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control" placeholder="Username" />
-                </div>
-                <div class="input-group mb-2" ">
-                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="Password" />
+                    @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @placeholder = "Username" })
                 </div>
                 <div class="input-group mb-2">
-                    <a class="link-success" href="#">Forgot you Password?</a>
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Username" })
+                </div>
+                <div class="input-group mb-2">
+                    @Html.ActionLink("Forgot you Password?", "ForgotPassword", "Account", new { @class = "link-success" })
                 </div>
                 <div class="d-grid mt-3">
                     <button class="btn btn-success">SignIn</button>
-                    <p class="text-center text-muted mt-3">Don't have a free account yet? <a href="Signup">Singup Here</a></p>
+                    <p class="text-center text-muted mt-3">Don't have a free account yet? @Html.ActionLink("Signup Here", "Signup", "Account")</p>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
-
-@section scripts
-{
-    <script>
-        $(document).ready(function () {
-            $("form").submit(function (event) {
-                event.preventDefault(); // Prevent form submission
-
-                let isValid = true;
-
-                // Reset error styles
-                $("input").removeClass("is-invalid");
-                $(".alert").addClass("visually-hidden").empty();
-
-                // Validate each input field
-                $("input").each(function () {
-                    if ($(this).val().trim() === "") {
-                        isValid = false;
-                        $(this).addClass("is-invalid");
-                    }
-                });
-
-                return isValid;
-            });
-        });
-    </script>
 }
