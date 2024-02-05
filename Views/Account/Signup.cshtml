@@ -6,7 +6,8 @@
 }
 
 <div class="container justify-content-center">
-    <form action="Signup" controller="Account" method="post">
+    <form method="post">
+        @Html.AntiForgeryToken()
         <div class="row mt-5">
             <div class="col-lg-5 col-md-6 col-sm-10 col-xxl-3 col-xl-4 m-auto">
                 <h2 class="text-center pt-2">Create New Account</h2>
@@ -32,12 +33,12 @@
                     <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
                 </div>
                 <div class="d-grid">
-                    <input type="submit" class="btn btn-success" value="Signup Now" actions="Signnup" />
+                    <input type="submit" class="btn btn-success" value="Signup Now" />
                     <p class="text-center text-muted mt-3">
                         When You Register by Clicking on Signup button, You Agree to our
                         <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>
                     </p>
-                    <p class="text-center text-muted mt-1">Already have an account? <a href="Signin">Login Here</a></p>
+                    <p class="text-center text-muted mt-1">Already have an account? @Html.ActionLink("Signin Here","Signin","Account")</p>
                 </div>
             </div>
         </div>
