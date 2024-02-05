@@ -18,5 +18,6 @@ namespace SocialNetworking.ViewModel
         [Required(ErrorMessage ="Please Enter Email Address")]
         [EmailAddress(ErrorMessage ="Please Enter Valid Email Adress")]
         public string Email { get;set; }
+        public string ErrorMessage { get; set; }
     }
 }
