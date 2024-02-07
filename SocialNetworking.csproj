@@ -115,6 +115,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\local\account.js" />
     <Content Include="Scripts\local\jQuery.min.js" />
+    <Content Include="Scripts\local\popper.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +168,7 @@
     <Content Include="Views\Account\Signin.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Dashboard\Profle.cshtml" />
+    <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
