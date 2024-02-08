@@ -13,10 +13,5 @@ namespace SocialNetworking.Controllers
         {
             return View();
         }
-
-        public ActionResult Password()
-        {
-            return View();
-        }
     }
 }
