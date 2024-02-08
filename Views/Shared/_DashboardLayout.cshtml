@@ -3,9 +3,34 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - ABC</title>
-    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet"  />
-    <link href="~/Content/css/regular.min.css" rel="stylesheet"  />
+    <title>@ViewBag.Title - ABC </title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/regular.min.css" rel="stylesheet" />
+    <style>
+        body{
+            background-color:#f9f9f9;
+        }
+        .menu-list-vert {
+            margin: 0 0 3px 0;
+            width: 150px;
+            text-align: left;
+        }
+            .menu-list-vert > .menu-item {
+                display: block;
+                padding: 5px 10px 5px 30px;
+                color: #888;
+                text-decoration: none;
+            }
+                .menu-list-vert > .menu-item:hover {
+                    color:#000000;
+                }
+
+        .form-control {
+            border-radius:0;
+            padding:3px 5px;
+        }
+    
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-success-subtle">
@@ -37,8 +62,23 @@
             </div>
         </div>
     </nav>
-    <div>
-        @RenderBody()
+    <div class="container">
+        <div class="container-fluid m-auto" style="background-color:#ffffff;">
+            <div class="d-flex">
+                <div class="menu-list-vert mt-3">
+                    <a href="#" class="menu-item">Profile</a>
+                    <a href="#" class="menu-item">Password</a>
+                    <a href="#" class="menu-item">Website</a>
+                    <a href="#" class="menu-item">Video</a>
+                    <a href="#" class="menu-item">Sitemap</a>
+                </div>
+                <div style="border-right:1px solid #ddd; margin:5px 10px;">
+                </div>
+                <div class="d-block" style="height: 82vh; width: 100%; overflow-x: hidden; overflow-y: auto;">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
     </div>
     <footer class="card-footer">
         <div class="fixed-bottom text-center mb-2">
