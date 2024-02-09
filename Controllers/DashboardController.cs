@@ -24,6 +24,16 @@ namespace SocialNetworking.Controllers
             return View();
         }
 
+        public ActionResult AddWebsite()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteWebsite()
+        {
+            return View();
+        }
+
         public ActionResult Video()
         {
             return View();
