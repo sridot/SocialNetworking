@@ -8,7 +8,7 @@
     <link href="~/Content/css/regular.min.css" rel="stylesheet" />
     <style>
         body{
-            background-color:#f9f9f9;
+            background-color:#e6e6e6;
         }
         .menu-list-vert {
             margin: 0 0 3px 0;
@@ -42,13 +42,13 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="~/Account/Home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="~/Dashboard/Profile">Profile</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -66,15 +66,15 @@
         <div class="container-fluid m-auto" style="background-color:#ffffff;">
             <div class="d-flex">
                 <div class="menu-list-vert mt-3">
-                    <a href="#" class="menu-item">Profile</a>
-                    <a href="#" class="menu-item">Password</a>
-                    <a href="#" class="menu-item">Website</a>
-                    <a href="#" class="menu-item">Video</a>
-                    <a href="#" class="menu-item">Sitemap</a>
+                    <a href="Profile" class="menu-item">Profile</a>
+                    <a href="Password" class="menu-item">Password</a>
+                    <a href="Website" class="menu-item">Website</a>
+                    <a href="Video" class="menu-item">Video</a>
+                    <a href="Sitemap" class="menu-item">Sitemap</a>
                 </div>
                 <div style="border-right:1px solid #ddd; margin:5px 10px;">
                 </div>
-                <div class="d-block" style="height: 82vh; width: 100%; overflow-x: hidden; overflow-y: auto;">
+                <div class="d-block" style="height: 84.5vh; width: 100%; overflow-x: hidden; overflow-y: auto;">
                     @RenderBody()
                 </div>
             </div>

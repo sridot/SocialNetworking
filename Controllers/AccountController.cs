@@ -11,6 +11,11 @@ namespace SocialNetworking.Controllers
 {
     public class AccountController : Controller
     {
+        public ActionResult Home()
+        {
+            return View();
+        }
+
         // GET: Account
         public ActionResult Signup()
         {

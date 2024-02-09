@@ -9,12 +9,27 @@ namespace SocialNetworking.Controllers
     public class DashboardController : Controller
     {
         // GET: Dashboard
-        public ActionResult Profle()
+        public ActionResult Profile()
         {
             return View();
         }
 
         public ActionResult Password()
+        {
+            return View();
+        }
+
+        public ActionResult Website()
+        {
+            return View();
+        }
+
+        public ActionResult Video()
+        {
+            return View();
+        }
+
+        public ActionResult Sitemap()
         {
             return View();
         }
