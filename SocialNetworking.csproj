@@ -177,6 +177,9 @@
     <Content Include="Views\Account\Home.cshtml" />
     <Content Include="Views\Dashboard\AddWebsite.cshtml" />
     <Content Include="Views\Dashboard\DeleteWebsite.cshtml" />
+    <Content Include="Views\Dashboard\AddVideo.cshtml" />
+    <Content Include="Views\Dashboard\DeleteVideo.cshtml" />
+    <Content Include="Views\Dashboard\AddSitemap.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

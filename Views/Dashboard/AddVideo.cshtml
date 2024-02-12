@@ -1,24 +1,24 @@
 ﻿
 @{
-    ViewBag.Title = "AddWebsite";
+    ViewBag.Title = "AddVideo";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
 <div class="container">
     <div class="btn-group float-end">
-        <a href="Website" class="btn btn-success">All</a>
+        <a href="Video" class="btn btn-success">All</a>
         <a href="#" class="btn btn-success active">Add</a>
-        <a href="DeleteWebsite" class="btn btn-success">Delete</a>
+        <a href="DeleteVideo" class="btn btn-success">Delete</a>
     </div>
-    <p class="display-6 text-muted m-2">Website</p>
-    <p class="text-muted m-2">Add website Url</p>
+    <p class="display-6 text-muted m-2">Video</p>
+    <p class="text-muted m-2">Add Video Url</p>
     @using (Html.BeginForm())
     {
         <div class="row g-2 m-2">
             <div class="col-md-8">
                 <div class="form-floating">
                     <input type="url" class="form-control" id="floatingUrl" placeholder="Please Enter Website Url" />
-                    <label for="floatingUrl">Url</label>
+                    <label for="floatingUrl">Video Url</label>
                 </div>
                 <span id="spurl" style="color:forestgreen; float:right;"></span>
             </div>
@@ -59,7 +59,7 @@
         </div>
         <div class="row g-2 m-2">
             <div class="col-md-8">
-                <input type="submit" value="Submit" class="btn btn-outline-success"/>
+                <input type="submit" value="Submit" class="btn btn-outline-success" />
             </div>
         </div>
     }

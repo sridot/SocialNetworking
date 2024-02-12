@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "AddSitemap";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="container">
+    <div class="btn-group float-end">
+        <a href="Sitemap" class="btn btn-success active" aria-current="page">All</a>
+        <a href="#" class="btn btn-success">Add Sitemap</a>
+    </div>
+    <p class="display-6 text-muted m-2">Sitemap</p>
+    <p class="text-muted m-2">add new sitemap</p>
+    @using (Html.BeginForm())
+    {
+        <div class="row g-2 mt-5 justify-content-center">
+            <div class="col-12">
+                <div class="form-floating">
+                    <input type="url" class="form-control" id="floatingUrl" placeholder="Please Enter Sitemap: https://www.example.com/sitemap.xml" />
+                    <label for="floatingUrl">Add Sitemapx</label>
+                </div>
+                <span id="spurl" style="color:forestgreen; float:right;"></span>
+            </div>
+        </div>
+        <div class="row g-2 m-2">
+            <div class="col-md-8">
+                <input type="submit" value="Submit" class="btn btn-outline-success" />
+            </div>
+        </div>
+
+    }
+</div>
+
