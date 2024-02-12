@@ -39,7 +39,22 @@ namespace SocialNetworking.Controllers
             return View();
         }
 
+        public ActionResult AddVideo()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteVideo()
+        {
+            return View();
+        }
+
         public ActionResult Sitemap()
+        {
+            return View();
+        }
+
+        public ActionResult AddSitemap()
         {
             return View();
         }
